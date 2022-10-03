@@ -28,5 +28,10 @@ const generateDescription = () => {
   return descriptions[randomIndex];
 };
 
-export {getRandomInteger, getRandomValue, generateDescription};
+function arrayRandElement(arr) {
+  const rand = Math.floor(Math.random() * arr.length);
+  return arr[rand];
+}
+
+export {getRandomInteger, getRandomValue, generateDescription, arrayRandElement};
 

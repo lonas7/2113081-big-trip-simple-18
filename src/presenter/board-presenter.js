@@ -2,7 +2,7 @@
 import EditFormView from '../view/edit-form-view.js';
 import PointOfRouteView from '../view/point-of-route-view.js';
 import BodyContainerView from '../view/body-container-view.js';
-
+import NoPointView from '../view/no-point-view.js';
 
 import {render} from '../render.js';
 
@@ -22,8 +22,12 @@ export default class BoardPresenter {
 
     render(this.#boardComponent, this.#boardContainer);
 
-    for (let i = 0; i < this.#boardPoints.length; i++) {
-      this.#renderPoint(this.#boardPoints[i]);
+    if ( this.#boardPoints.every((task) => task.isArchive)) {
+      render(new NoPointView(), this.#boardComponent.element);
+    } else {
+      for (let i = 0; i < this.#boardPoints.length; i++) {
+        this.#renderPoint(this.#boardPoints[i]);
+      }
     }
   };
 
