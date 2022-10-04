@@ -1,7 +1,7 @@
 import {render} from './framework/render.js';
 
 import FilterView from './view/filter-view.js';
-import SortingView from './view/sorting-view.js';
+///import SortingView from './view/sorting-view.js';
 import BoardPresenter from './presenter/board-presenter.js';
 import PointModel from './model/point-model.js';
 ///import FormView from './view/creation-form-view.js';
@@ -18,7 +18,7 @@ const boardPresenter = new BoardPresenter(siteSortingElement, pointModel);
 ///const sitePointOfRouteElement = document.querySelector('.trip-events');
 
 render(new FilterView(), siteFilterElement);
-render(new SortingView(), siteSortingElement);
+//render(new SortingView(), siteSortingElement);
 ///render(new FormView(), siteAddFormElement);
 ///render(new EditFormView(), siteEditFormElement);
 ///render(new PointOfRouteView(), sitePointOfRouteElement);

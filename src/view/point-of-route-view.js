@@ -1,12 +1,17 @@
 import AbstractView from '../framework/view/abstract-view.js';
+import { getRandomInteger, } from '../utils/common.js';
+import { humanizeTaskDueDate } from '../utils/common.js';
 
 const createPointOfRouteTemplate = (point) => {
-  const {basePrice, dateFrom, dateTo, destination, type} = point;
+  const {basePrice, dueDate, dueDate2, destination, type} = point;
+  const dateFrom = humanizeTaskDueDate(dueDate);
+  const dateTo = humanizeTaskDueDate(dueDate2);
+
   return (
     `<ul class="trip-events__list">
             <li class="trip-events__item">
               <div class="event">
-                <time class="event__date" datetime="2019-03-18">MAR 18</time>
+                <time class="event__date" datetime="2019-03-18">MAR ${getRandomInteger(1,31)}</time>
                 <div class="event__type">
                   <img class="event__type-icon" width="42" height="42" src="img/icons/taxi.png" alt="Event type icon">
                 </div>

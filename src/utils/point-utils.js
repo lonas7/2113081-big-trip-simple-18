@@ -1,5 +1,5 @@
 import { getRandomInteger } from '../utils/common.js';
-
+import {dayjs} from 'dayjs';
 const generateDescription = () => {
   const descriptions = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -20,5 +20,32 @@ const generateDescription = () => {
   return descriptions[randomIndex];
 };
 
+const getWeightForNullDate = (dateA, dateB) => {
+  if (dateA === null && dateB === null) {
+    return 0;
+  }
 
-export {generateDescription};
+  if (dateA === null) {
+    return 1;
+  }
+
+  if (dateB === null) {
+    return -1;
+  }
+
+  return null;
+};
+
+const sortDay = (piontA, pointB) => {
+  const weight = getWeightForNullDate(piontA.dueDate, pointB.dueDate);
+
+  return weight ?? dayjs(piontA.dueDate).diff(dayjs(pointB.dueDate));
+};
+
+const sortPrice = (pointA, pointB) => {
+  const weight = getWeightForNullDate(pointA, pointB);
+
+  return weight ?? pointB.diff(pointA);
+};
+
+export {generateDescription, sortDay, sortPrice};
