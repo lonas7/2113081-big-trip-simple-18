@@ -1,4 +1,5 @@
-import {getRandomInteger, generateDescription, getRandomValue} from './util.js';
+import {getRandomInteger, getRandomValue} from '../utils/common.js';
+import { generateDescription } from '../utils/point-utils.js';
 import { cities, titlesOffers } from './const.js';
 
 const destination = {

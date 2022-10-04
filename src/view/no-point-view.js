@@ -1,5 +1,5 @@
-import {createElement} from '../render.js';
-import {arrayRandElement} from '../mock/util.js';
+import AbstractView from '../framework/view/abstract-view.js';
+import {arrayRandElement} from '../utils/common.js';
 
 const createNoPointTemplate = () => {
   const messagesError = [
@@ -13,22 +13,8 @@ const createNoPointTemplate = () => {
   );
 };
 
-export default class NoPointView {
-  #element = null;
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
+export default class NoPointView extends AbstractView {
   get template() {
     return createNoPointTemplate();
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }

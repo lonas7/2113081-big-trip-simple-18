@@ -1,4 +1,4 @@
-import {createElement} from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 
 const createPointOfRouteTemplate = (point) => {
   const {basePrice, dateFrom, dateTo, destination, type} = point;
@@ -38,11 +38,11 @@ const createPointOfRouteTemplate = (point) => {
   );
 };
 
-export default class PointOfRouteView {
-  #element = null;
+export default class PointOfRouteView extends AbstractView {
   #point = null;
 
   constructor(point) {
+    super();
     this.#point = point;
   }
 
@@ -50,15 +50,13 @@ export default class PointOfRouteView {
     return createPointOfRouteTemplate(this.#point);
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
+  setEditClickHandler = (callback) => {
+    this._callback.editClick = callback;
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#editClickHandler);
+  };
 
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
-  }
+  #editClickHandler = (evt) => {
+    evt.preventDefault();
+    this._callback.editClick();
+  };
 }
