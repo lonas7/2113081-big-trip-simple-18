@@ -1,3 +1,4 @@
+import {nanoid} from 'nanoid';
 import {getRandomInteger, getRandomValue} from '../utils/common.js';
 import { generateDescription } from '../utils/point-utils.js';
 import { cities, titlesOffers } from './const.js';
@@ -36,6 +37,7 @@ const offer = {
 
 export const generatePoint = () => (
   {
+    pid: nanoid(),
     basePrice: getRandomInteger(50, 1000),
     dateFrom: '2019-07-10T22:55:56.845Z',
     dateTo: '2019-07-11T11:22:13.375Z',
